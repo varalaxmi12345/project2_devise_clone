@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>devise_clone</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="container">
+  <p class="navbar-text float-right">
+<% if session[:user] %>
+  <%= link_to "Edit profile", profile_edit_profile_path %> | <%= link_to "Reset password", password_reset_password_path %>
+  <%= link_to "Logout", account_login_path %>
+<% else %>
+  <%= link_to "Sign up", account_signup_path  %> |
+  <%= link_to "Login", account_login_path %>
+<% end %>
+</p>
+  <input type="checkbox" id="flip">
+  <div class="cover">
+    <div class="front">
+      <img src="/assets/frontImg.jpg" alt="">
+      <div class="text">
+        <span class="text-1">Every new friend is a <br> new adventure</span>
+        <span class="text-2">Let's get connected</span>
+      </div>
+    </div>
+    <div class="back">
+      <img class="backImg" src="/assets/backImg.jpg" alt="">
+      <div class="text">
+        <span class="text-1">Complete miles of journey <br> with one step</span>
+        <span class="text-2">Let's get started</span>
+      </div>
+    </div>
+  </div>
+  <div class="forms">
+      <%= yield %>
+      </form>
+    </div>
+    </div>
+  </div>
+  </div>
+  </body>
+</html>

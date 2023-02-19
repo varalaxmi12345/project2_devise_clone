@@ -1,0 +1,17 @@
+<h2>Login</h2>
+<%= flash[:notice] %>
+<%= form_with url: "/account/login", method: :post do |f| %>
+    <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login"%>
+  </div>
+<% end %>
+
+<%= link_to "Forget your password?", password_forgot_password_path %>

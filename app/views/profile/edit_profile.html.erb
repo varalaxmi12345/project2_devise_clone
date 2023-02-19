@@ -1,0 +1,40 @@
+<%= flash[:notice] %>
+<h2>Edit profile</h2>
+<%= form_with url: "/profile/edit_profile",method: :post do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %></h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div> 
+    <% end %>
+
+<div class="field">
+    <%= form.label :first_name %><br/>
+    <%= form.text_field :first_name, :value=>@user.first_name %>
+</div><br/>
+
+<div class="field">
+    <%= form.label :last_name %><br/>
+    <%= form.text_field :last_name, :value=>@user.last_name %>
+</div><br/>
+
+
+<div class="field">
+    <%= form.label :header_image%><br/>
+    <%= image_tag(@user.header_image_blob, width:'10%') if @user.header_image.present?%><br/>
+    <%= form.file_field :header_image%>
+</div><br/>
+
+
+</br>
+
+
+<div class="actions">
+    <%= form.submit "edit profile" %>
+</div>
+<% end %>
